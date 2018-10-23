@@ -317,51 +317,49 @@ public class C4_GUI extends JFrame {
 
 		public boolean isWinnerInRow(){
 			String symbol = currPlayer.getSymbol();
-			String otherSym = "";
-			if(currPlayer == player1) {
-				otherSym = player2.getSymbol();
-			}
-			else if(currPlayer == player2) {
-				otherSym = player1.getSymbol();
-			}
+//			if(currPlayer == player1) {
+//				otherSym = player2.getSymbol();
+//			}
+//			else if(currPlayer == player2) {
+//				otherSym = player1.getSymbol();
+//			}
 			for(int row = 0; row < 6; row++){
 				int numMatchesInRow = 0; //reset on the next row
 				for(int col = 0; col < 7; col++){
 					if(C4_CheckerSlot.slots[row][col].getText().trim().equalsIgnoreCase(symbol)){
 						numMatchesInRow++;
 					}
-					else if(C4_CheckerSlot.slots[row][col].getText().trim().equalsIgnoreCase(otherSym)){
+					else {
 						numMatchesInRow = 0;
 					}
+					if(numMatchesInRow == 4){
+						return true;
+					}
+					
+//					else if(C4_CheckerSlot.slots[row][col].getText().trim().equalsIgnoreCase(otherSym)){
+//						numMatchesInRow = 0;
+//					}
 				}
-				if(numMatchesInRow == 4){
-					return true;
-				}
+				
 			}
 			return false;
 		}
 		public boolean isWinnerInCol() {
 			String symbol = currPlayer.getSymbol();
-			String otherSym = "";
-			if(currPlayer == player1) {
-				otherSym = player2.getSymbol();
-			}
-			else if(currPlayer == player2) {
-				otherSym = player1.getSymbol();
-			}
 			for(int col = 0; col < 7; col++) {
 				int numMatchesInCol = 0;
 				for(int row = 0; row < 6; row++) {
 					if(C4_CheckerSlot.slots[row][col].getText().trim().equalsIgnoreCase(symbol)){
 						numMatchesInCol++;
 					}
-					else if(C4_CheckerSlot.slots[row][col].getText().trim().equalsIgnoreCase(otherSym)) {
+					else {
 						numMatchesInCol = 0;
 					}
+					if(numMatchesInCol == 4) {
+						return true;
+					}
 				}
-				if(numMatchesInCol == 4) {
-					return true;
-				}
+				
 			}
 			return false;
 		}
